@@ -2,6 +2,7 @@ package com.casper.sdk.model.clvalue;
 
 import com.casper.sdk.exception.DynamicInstanceException;
 import com.casper.sdk.exception.NoSuchTypeException;
+import com.casper.sdk.model.clvalue.cltype.AbstractCLType;
 import com.casper.sdk.model.clvalue.cltype.AbstractCLTypeWithChildren;
 import com.casper.sdk.model.clvalue.cltype.CLTypeData;
 import com.casper.sdk.model.clvalue.cltype.CLTypeMap;
@@ -35,6 +36,10 @@ public class CLValueMap extends
         AbstractCLValueWithChildren<Map<? extends AbstractCLValue<?, ?>, ? extends AbstractCLValue<?, ?>>, CLTypeMap> {
     @JsonProperty("cl_type")
     private CLTypeMap clType = new CLTypeMap();
+
+    public CLValueMap(AbstractCLType key, AbstractCLType value) {
+        clType.setKeyValueTypes(new CLTypeMap.CLTypeMapEntryType(key, value));
+    }
 
     public CLValueMap(Map<? extends AbstractCLValue<?, ?>, ? extends AbstractCLValue<?, ?>> value) {
         this.setValue(value);

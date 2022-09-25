@@ -58,7 +58,7 @@ public abstract class AbstractCLValue<T, P extends AbstractCLType> implements Ca
     @SneakyThrows({ValueDeserializationException.class})
     @JsonSetter(value = "bytes")
     @ExcludeFromJacocoGeneratedReport
-    protected void setJsonBytes(String bytes) {
+    public void setJsonBytes(String bytes) {
         this.bytes = bytes;
 
         DeserializerBuffer deser = new DeserializerBuffer(this.bytes);
